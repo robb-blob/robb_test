@@ -1,0 +1,61 @@
+<template>
+        <div class="wrapper slds-align_absolute-center">
+        <lightning-card title="New Trade">
+                <div class="slds-grid slds-gutters slds-wrap slds-p-horizontal_xx-large">
+                        <div class="slds-col slds-size_4-of-12">
+                                <lightning-combobox
+                                        name="sellCurrency"
+                                        label="Sell Currency"
+                                        value={sellCurrency}
+                                        placeholder="Pick a currency"
+                                        options={currencies}
+                                        onchange={handleSellCurrencyChange}>
+                                </lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size_1-of-12 slds-align_absolute-center slds-p-top_medium">
+                                <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                        </div>
+                        <div class="slds-col slds-size_2-of-12">
+                                <lightning-input type="number" name="rate" label="Rate" value={rate} disabled=true></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-12 slds-align_absolute-center slds-p-top_medium">
+                                <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                        </div>
+                        <div class="slds-col slds-size_4-of-12">
+                                <lightning-combobox
+                                        name="buyCurrency"
+                                        label="Status"
+                                        value={buyCurrency}
+                                        placeholder="Pick a currency"
+                                        options={currencies}
+                                        onchange={handleBuyCurrencyChange}>
+                                </lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                                <lightning-input type="number" name="sellAmount" label="Sell Amount" value={sellAmount} onchange={handleAmountChange}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                                
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                                <lightning-input type="number" name="buyAmount" label="Buy Amount" value={buyAmount} disabled=true></lightning-input>            
+                        </div>
+                        <br/>
+                        <br/>
+                </div>
+                <div slot="footer">
+                        <div class="slds-clearfix">
+                                <div class="slds-float_left">
+                                        <lightning-button variant="brand" label="Create" title="Create" onclick={save} class="slds-m-left_large"></lightning-button>
+                                </div>
+                                <div class="slds-float_right">
+                                        <lightning-button variant="neutral" label="Cancel" title="Cancel" onclick={cancel} class="slds-m-right_large"></lightning-button>
+                                </div>
+                        </div>
+                </div>
+        </lightning-card>
+        <template if:true={loading}>
+                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
+        </div>
+</template>
